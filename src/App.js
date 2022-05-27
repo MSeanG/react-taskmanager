@@ -1,23 +1,19 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import Items from './Items';
 import './App.css';
 
 function App() {
+  const [assigned, setAssigned] = useState(['assigned goes here']);
+  const onUpdate = (list) => {
+    setAssigned(list);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Items update={onUpdate} />
+      Dragons be here
+      <div>
+        <textarea value={[assigned]} readOnly></textarea>
+      </div>
     </div>
   );
 }
